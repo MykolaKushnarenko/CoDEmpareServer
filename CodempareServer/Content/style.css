@@ -1,0 +1,379 @@
+@font-face {
+  font-family: "PTSans";
+  src: url("../fonts/PTSansRegular/PTSansRegular.eot");
+  src: url("../fonts/PTSansRegular/PTSansRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSansRegular/PTSansRegular.woff") format("woff"), url("../fonts/PTSansRegular/PTSansRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "PTSans";
+  src: url("../fonts/PTSansBold/PTSansBold.eot");
+  src: url("../fonts/PTSansBold/PTSansBold.eot?#iefix") format("embedded-opentype"), url("../fonts/PTSansBold/PTSansBold.woff") format("woff"), url("../fonts/PTSansBold/PTSansBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+@font-face {
+  font-family: "OpenSansSemiBold";
+  src: url("../fonts/OpenSansSemiBold/OpenSansSemiBold.eot");
+  src: url("../fonts/OpenSansSemiBold/OpenSansSemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSansSemiBold/OpenSansSemiBold.woff") format("woff"), url("../fonts/OpenSansSemiBold/OpenSansSemiBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  font-family: "UbuntuBold";
+  src: url("../fonts/UbuntuBold/UbuntuBold.eot");
+  src: url("../fonts/UbuntuBold/UbuntuBold.eot?#iefix") format("embedded-opentype"), url("../fonts/UbuntuBold/UbuntuBold.woff") format("woff"), url("../fonts/UbuntuBold/UbuntuBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 700;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html, body {
+  font-family: "PTSans";
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  height: 100%;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.wrap {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+}
+
+footer {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+}
+
+header, footer {
+  min-height: 58px;
+  width: 100%;
+}
+
+.content {
+  padding: 0 5px;
+  max-width: 590px;
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+main {
+  max-width: 800px;
+  width: 100%;
+}
+
+.block-1, .block-3, .block-5 {
+  background-color: #eeeeef;
+}
+
+.block-7 {
+  background-color: #50c3af;
+}
+
+/*-------------------*/
+button {
+  border-radius: 30px;
+}
+
+.button_enable {
+  background-color: #50c3af;
+}
+
+.button_disable {
+  background-color: #D2D5DA;
+}
+
+.block-1__item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 62px 0 68px 0;
+}
+
+.block-2__item {
+  padding: 65px 0 77px 0;
+}
+
+.block-2__title {
+  text-transform: uppercase;
+  color: #40474e;
+  padding-top: 20px;
+}
+
+.block-2__item p {
+  width: 240px;
+  color: #787b80;
+  margin-bottom: 34px;
+}
+
+.block-2__line {
+  border-top: 2px solid #E2E3E4;
+  width: 100%;
+  margin: 23px 0 31px;
+}
+
+.block-2__button {
+  outline: none;
+  border: none;
+  color: #F5F5F5;
+  width: 98px;
+  height: 35px;
+}
+.block-2__item img {
+   width: 250px;}
+
+.block-3__item {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.block-3__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 30px;
+}
+
+.block-3__title_text{
+  margin: 0px;
+  padding: 0 0 15px 10px;
+  color: #384048;
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: uppercase;
+  
+}
+
+.block-3__img {
+  width: 24px;
+  height: 23px;
+}
+
+.block-3__line {
+  border-top: 2px solid #E2E3E4;
+  width: 100%;
+  margin: 5px 0 20px;
+}
+
+.block-3__item p {
+  width: 567px;
+  color: #787b80;
+  margin-bottom: 38px;
+}
+
+
+
+
+footer img {
+  margin: 20px 0px 0px 0px;
+}
+
+footer p {
+  font-size: 13px;
+  color: #787b80;
+  padding-right: 245px;
+  margin-top: 20px;
+}
+
+.footer__image1 {
+  width: 18px;
+  height: 17px;
+}
+
+.footer__image2 {
+  width: 10px;
+  height: 17px;
+}
+
+.footer__image3 {
+  width: 16px;
+  height: 14px;
+}
+
+header {
+  background-image: url(../img/header_1.jpg);
+  width: 800px;
+  height: 493px;
+  background-size: 100%;
+}
+
+.header__menu {
+  margin: 47px auto 0;
+}
+.header__menu li {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0 20px;
+}
+.header__menu a {
+  color: #ffffff;
+  font-family: "OpenSansSemiBold";
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.header__group1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  padding-top: 63px;
+}
+
+.header__group1 img {
+  width: 109px;
+  height: 44px;
+  margin: auto;
+}
+
+.header__group1 p {
+  color: #ffffff;
+  font-family: "UbuntuBold";
+  font-size: 53px;
+  text-transform: uppercase;
+  margin: 60px auto 43px;
+}
+
+.header__group2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 300px;
+  width: 450px;
+}
+
+.header__group2 p {
+  width: 216px;
+  color: lavender;
+  font-family: "PTSans";
+  font-size: 15px;
+  text-transform: uppercase;
+  margin: 0px 34px 0px 32px;
+  text-align: center;
+  white-space: nowrap;
+  font-weight:bold;
+}
+
+.header__line {
+  border-top: 2.5px solid darkorchid;
+  width: 100%;
+  margin: 10px 0 31px 0;
+  opacity: 1.0;
+}
+
+
+.header_top_panal{
+
+
+}
+.block-1__ico {
+  width: 43px;
+  height: 31px;
+  background: url(../img/icon/css_sprites.png) no-repeat;
+  background-position: -9px -77px;
+}
+
+.logo {
+  width: 109px;
+  height: 44px;
+  margin: auto;
+}
+.hide {
+  visibility: hidden;
+}
+
+.visib {
+  visibility: visible;
+}
+
+/*# sourceMappingURL=style.css.map */
