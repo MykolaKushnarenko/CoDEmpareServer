@@ -13,7 +13,6 @@ namespace TextGUIModule
         private List<string> divStr;
         private List<string> compliteText;
         private StringBuilder compileSt;
-        private readonly string _filepath;
         private readonly Stream _stream;
         private readonly StreamReader _file;
         public Normalization(byte[] code)
