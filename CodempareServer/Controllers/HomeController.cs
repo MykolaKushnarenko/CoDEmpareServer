@@ -29,9 +29,13 @@ namespace COURCEClientServer2.Controllers
             _result.Add(_db.GetOrignCodeFromId(_db.IdiDenticalFie));
             _db.SetCodeMain(_db.IdMainFileForHist);
             _db.SetCodeChild(_db.IdiDenticalFie);
-            _result.Add(String.Format("Levenshtein Distance : {0:0.##}", _db.Code.ResultAlgorithm(1)));
-            _result.Add(String.Format("WShiling : {0:0.##}", _db.Code.ResultAlgorithm(2)));
-            _result.Add(String.Format("Haskel : {0:0.##}", _db.Code.ResultAlgorithm(0)));
+            double resVarnFish = _db.Code.ResultAlgorithm(1);
+            double resVShiling = _db.Code.ResultAlgorithm(2);
+            double resHeskel = _db.Code.ResultAlgorithm(0);
+            _result.Add(String.Format("Levenshtein Distance : {0:0.##}", resVarnFish));
+            _result.Add(String.Format("WShiling : {0:0.##}", resVShiling));
+            _result.Add(String.Format("Haskel : {0:0.##}", resHeskel));
+            //_db.AddingHistiry(resVarnFish, resVShiling, resHeskel);
         }
         [HttpPost]
         public async Task<string> GetComipeType(string lang)
@@ -49,7 +53,6 @@ namespace COURCEClientServer2.Controllers
         public async Task<string> AddCode(AddingCodeObject param)
         {
             bool isOver = await _db.AddingSubmit(param.Name, param.Description, param.CompileType, param.Code, param.IsSearch, param.FileMane);
-
             _result.Clear();
             _result.Add(JsonConvert.SerializeObject(isOver));
             if (param.IsSearch)
@@ -76,5 +79,14 @@ namespace COURCEClientServer2.Controllers
             GetResultList();
             return JsonConvert.SerializeObject(_result);
         }
+
+        [HttpGet]
+        public string GetListHistory()
+        {
+            List<string> listAllHistory = _db.GetListHistory();
+            string result = JsonConvert.SerializeObject(listAllHistory);
+            return result;
+        }
+
     }
 }
