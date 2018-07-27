@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using COURCEClientServer2.ObjectDataSender;
 using Newtonsoft.Json;
 using TextGUIModule;
 
@@ -16,7 +17,7 @@ namespace COURCEClientServer2.Controllers
     {
         // GET: Home
         private List<string> _result = new List<string>();
-        private DataBaseLite _db = new DataBaseLite();
+        private DataBaseAPI _db = new DataBaseAPI();
         public ActionResult Index()
         {
             
@@ -86,6 +87,13 @@ namespace COURCEClientServer2.Controllers
             List<string> listAllHistory = _db.GetListHistory();
             string result = JsonConvert.SerializeObject(listAllHistory);
             return result;
+        }
+
+        [HttpPost]
+        public string Registration(RegistrationObject regInfo)
+        {
+            _db.RegistsAccount(regInfo.Name, regInfo.EMail, regInfo.Password);
+            return JsonConvert.SerializeObject(true);
         }
 
     }

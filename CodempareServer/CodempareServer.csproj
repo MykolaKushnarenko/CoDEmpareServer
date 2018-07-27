@@ -134,11 +134,12 @@
     <Content Include="Views\Home\MainPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddingCodeObject.cs" />
+    <Compile Include="ObjectDataSender\AddingCodeObject.cs" />
     <Compile Include="Algorithm\AlgorithmFactory.cs" />
     <Compile Include="Analysis.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Normalization.cs" />
+    <Compile Include="ObjectDataSender\RegistrationObject.cs" />
     <Compile Include="Tokking\ATokkining.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Algorithm\Heskel.cs" />
@@ -148,7 +149,7 @@
     <Compile Include="Tokking\TokkingJava.cs" />
     <Compile Include="Tokking\TokkingSharp.cs" />
     <Compile Include="Tokking\TokkingСPP.cs" />
-    <Compile Include="WorkDataBases\DataBaseLite.cs" />
+    <Compile Include="WorkDataBases\DataBaseAPI.cs" />
     <Compile Include="MainPage.aspx.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
