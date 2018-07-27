@@ -35,7 +35,7 @@ namespace COURCEClientServer2.Controllers
             _result.Add(String.Format("Levenshtein Distance : {0:0.##}", resVarnFish));
             _result.Add(String.Format("WShiling : {0:0.##}", resVShiling));
             _result.Add(String.Format("Haskel : {0:0.##}", resHeskel));
-            //_db.AddingHistiry(resVarnFish, resVShiling, resHeskel);
+            _db.AddingHistiry(resVarnFish, resVShiling, resHeskel);
         }
         [HttpPost]
         public async Task<string> GetComipeType(string lang)

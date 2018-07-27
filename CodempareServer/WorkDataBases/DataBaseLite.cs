@@ -182,7 +182,7 @@ namespace TextGUIModule
             int countHist = 0;
             string histDesc = "";
             conn.Open();
-            using (command = new SqlCommand("select count(History.id) from History", conn))
+            using (command = new SqlCommand("select count([history].id) from [history]", conn))
             {
                 using (IDataReader r = command.ExecuteReader())
                 {
@@ -197,7 +197,7 @@ namespace TextGUIModule
             {
                 using (command =
                     new SqlCommand(
-                        "select User.Name from User join Submit on Submit.id_User = User.id join History on History.id_Sublit1 = Submit.id where History.id = @id",
+                        "select [user].name from [user] join submit on [submit].id_user = [user].id join [history] on [history].id_sublit1 = [submit].id where [history].id = @id",
                         conn))
                 {
                     command.Parameters.Add(new SqlParameter("@id", i + 1));
@@ -215,7 +215,7 @@ namespace TextGUIModule
                 }
                 using (command =
                     new SqlCommand(
-                        "select User.Name from User join Submit on Submit.id_User = User.id join History on History.id_Submit2 = Submit.id where History.id = @id",
+                        "select [user].name from [user] join [submit] on [submit].id_user = [user].id join [history] on [history].id_submit2 = [submit].id where [history].id = @id",
                         conn))
                 {
                     command.Parameters.Add(new SqlParameter("@id", i + 1));
@@ -231,7 +231,7 @@ namespace TextGUIModule
 
                 using (command =
                     new SqlCommand(
-                        "select History.State_DistenceLiv, History.State_Heskela, History.State_VShingl from History where History.id = @id",
+                        "select [history].state_distenceLiv, [history].state_heskela, [history].state_vshingl from [history] where [history].id = @id",
                         conn))
                 {
                     command.Parameters.Add(new SqlParameter("@id", i + 1));
@@ -310,7 +310,7 @@ namespace TextGUIModule
             conn.Open();
             int idMainSub = -1;
             int idChaildSub = -1;
-            using (command = new SqlCommand("select Submit.id from Submit join File on Submit.id = File.id_Submit where File.id = @id", conn))
+            using (command = new SqlCommand("select [submit].id from [submit] join [file] on [submit].id = [file].id_submit where [file].id = @id", conn))
             {
                 command.Parameters.Add(new SqlParameter("@id", idMainFileForHist));
                 using (IDataReader r = command.ExecuteReader())
@@ -323,7 +323,7 @@ namespace TextGUIModule
 
                 }
             }
-            using (command = new SqlCommand("select Submit.id from Submit join File on Submit.id = File.id_Submit where File.id = @id", conn))
+            using (command = new SqlCommand("select [submit].id from [submit] join [file] on [submit].id = [file].id_submit where [file].id = @id", conn))
             {
                 command.Parameters.Add(new SqlParameter("@id", idiDenticalFie));
                 using (IDataReader r = command.ExecuteReader())
@@ -337,7 +337,7 @@ namespace TextGUIModule
                 }
             }
             using (command = new SqlCommand(
-                "insert into History (Date,State_VShingl,State_DistenceLiv,State_Heskela, id_Sublit1, id_Submit2 ) values(@Date,@State_VShingl,@State_DistenceLiv,@State_Heskela, @id_Sublit1, @id_Submit2 )", conn))
+                "insert into history (date,state_vshingl,state_distenceliv,state_heskela, id_sublit1, id_submit2 ) values(@Date,@State_VShingl,@State_DistenceLiv,@State_Heskela, @id_Sublit1, @id_Submit2 )", conn))
             {
                 command.Parameters.Add(new SqlParameter("@Date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
                 command.Parameters.Add(new SqlParameter("@State_VShingl", resVShiling));
