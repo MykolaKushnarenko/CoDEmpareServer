@@ -4,10 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <link rel="stylesheet" href="Content/style.css">
-    <link rel="stylesheet" href="Content/animated.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>CoDEmpare</title>
+    <link rel="stylesheet" href="Content/style.css"/>
+    <link rel="stylesheet" href="Content/animated.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
     <script type="text/javascript" src="Scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="Scripts/script.js"></script>
 </head>
@@ -43,7 +43,7 @@
                 <div class="block-2 animated mov hide">
 					<div class="content">
 	                    <div class="block-2__item">
-							<img src="Img/program_1.jpg" alt="user-group">
+	                        <img src="Img/program_1.jpg" alt="user-group"/>
 							<div class="block-2__title">
 								<h1>Responsive email template</h1>
 							</div>
@@ -52,7 +52,7 @@
 	                    	<button class="block-2__button button_enable">Read more</button>
 	                    </div>
 	                    <div class="block-2__item">
-							<img src="Img/program_1.jpg" alt="user-group">
+	                        <img src="Img/program_1.jpg" alt="user-group"/>
 							<div class="block-2__title">
 								<h1>Fully compatible template</h1>
 							</div>

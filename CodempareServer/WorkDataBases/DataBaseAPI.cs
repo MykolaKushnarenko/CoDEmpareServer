@@ -15,14 +15,9 @@ namespace TextGUIModule
 {
     public class DataBaseAPI
     {
-        private string cont = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString;
-        private static readonly string pathSQL = @"Data\Compare.db";
+        private string _dataBasesConfig = WebConfigurationManager.ConnectionStrings["DatabaseConnectionString1"].ConnectionString;
         private SqlConnection conn;
         private SqlCommand command;
-
-        //private SqlConnection connnn;
-        //SqlCommand commands;
-
         private int countLine = 0;
         private int idMainFileForHist = -1;
         private int idiDenticalFie = -1;
@@ -170,7 +165,7 @@ namespace TextGUIModule
         }
         public DataBaseAPI()
         {
-            conn = new SqlConnection(cont);
+            conn = new SqlConnection(_dataBasesConfig);
             IsNull();
             command = new SqlCommand();
             Code = new Analysis();
@@ -259,35 +254,35 @@ namespace TextGUIModule
             conn.Close();
             return listHist;
         }
-        public string GetInfoSubm(bool isMain)
-        {
-            string info = "";
-            conn.Open();
-            using (command = new SqlCommand("select User.Name, Submit.description from User join Submit on Submit.id_User = User.id join File on File.id_Submit = Submit.id where File.id = @id", conn))
-            {
-                if (isMain)
-                {
-                    command.Parameters.Add(new SqlParameter("@id", idMainFileForHist));
-                }
-                else
-                    command.Parameters.Add(new SqlParameter("@id", idiDenticalFie));
+        //public string GetInfoSubm(bool isMain)
+        //{
+        //    string info = "";
+        //    conn.Open();
+        //    using (command = new SqlCommand("select User.Name, Submit.description from User join Submit on Submit.id_User = User.id join File on File.id_Submit = Submit.id where File.id = @id", conn))
+        //    {
+        //        if (isMain)
+        //        {
+        //            command.Parameters.Add(new SqlParameter("@id", idMainFileForHist));
+        //        }
+        //        else
+        //            command.Parameters.Add(new SqlParameter("@id", idiDenticalFie));
 
-                using (IDataReader r = command.ExecuteReader())
-                {
-                    if (r.Read())
-                    {
-                        info = "Имя: " + r.GetString(0);
-                        info += "\r";
-                        info +="Описание: "+ r.GetString(1);
+        //        using (IDataReader r = command.ExecuteReader())
+        //        {
+        //            if (r.Read())
+        //            {
+        //                info = "Имя: " + r.GetString(0);
+        //                info += "\r";
+        //                info +="Описание: "+ r.GetString(1);
 
-                    }
+        //            }
 
-                }
-            }
+        //        }
+        //    }
 
-            conn.Close();
-            return info;
-        }
+        //    conn.Close();
+        //    return info;
+        //}
         private string TextWrite(byte[] code)
         {
             Stream stream = new MemoryStream(code);
@@ -457,30 +452,30 @@ namespace TextGUIModule
             conn.Close();
         }
 
-        public bool IsNotEnpty()
-        {
-            conn.Open();
-            int res = 0;
-            using (command = new SqlCommand(
-                "select count(id) from File; ", conn))
-            {
+        //public bool IsNotEnpty()
+        //{
+        //    conn.Open();
+        //    int res = 0;
+        //    using (command = new SqlCommand(
+        //        "select count(id) from File; ", conn))
+        //    {
 
-                using (IDataReader r = command.ExecuteReader())
-                {
-                    while (r.Read())
-                    {
-                        res = r.GetInt32(0);
-                    }
+        //        using (IDataReader r = command.ExecuteReader())
+        //        {
+        //            while (r.Read())
+        //            {
+        //                res = r.GetInt32(0);
+        //            }
 
-                }
-            }
-            conn.Close();
-            if (res > 5)
-            {
-                return true;
-            }
-            else return false;
-        }
+        //        }
+        //    }
+        //    conn.Close();
+        //    if (res > 5)
+        //    {
+        //        return true;
+        //    }
+        //    else return false;
+        //}
         public List<string> DescSubm()
         {
             List<string> allDesc = new List<string>();
@@ -790,11 +785,10 @@ namespace TextGUIModule
                     }
 
                 }
-                catch (SQLiteException ex)
+                catch
                 {
-                    ProntError(ex.Message);
+                    return false;
                 }
-
 
                 AddingCode(code, language, tahSubmit, serachNow, nameFile);
                 conn.Close();
@@ -832,27 +826,6 @@ namespace TextGUIModule
             return compList;
         }
         /*------------------Submit---------------------*/
-
-        /*------------Grams---------------*/
-        public void AddingGrams(string s)
-        {
-            if (Connections())
-            {
-                command.CommandText = "SELECT EXISTS(SELECT id FROM Gram WHERE Gram = '')";
-                object amount = false;
-                try
-                {
-                    amount = command.ExecuteScalar();
-                }
-                catch (SQLiteException ex)
-                {
-                    ProntError(ex.Message);
-                }
-                
-            }
-            
-        }
-        /*------------Grams---------------*/
         /*------------Account---------------*/
         public void RegistsAccount(string name, string email, string password)
         {
@@ -896,9 +869,9 @@ namespace TextGUIModule
             string pass = "";
             conn.Open();
             using (command =
-                new SqlCommand("select Account.password from Account where Account.email = @email", conn))
+                new SqlCommand("select [account].password from [account] where [account].email = @email", conn))
             {
-                command.Parameters.Add(new SQLiteParameter("@email", email));
+                command.Parameters.Add(new SqlParameter("@email", email));
                 using (IDataReader r = command.ExecuteReader())
                 {
                     if (r.Read())
@@ -929,18 +902,14 @@ namespace TextGUIModule
 
         private bool Connections()
         {
-            conn = new SqlConnection(cont);
+            conn = new SqlConnection(_dataBasesConfig);
             try
             {
                 conn.Open();
-                ProntInfo("Connect!");
                 return true;
-                
-
             }
             catch (Exception ex)
             {
-                ProntError(ex.Message);
                 return false;
             }
         }
@@ -966,14 +935,7 @@ namespace TextGUIModule
         {   
             conn.Open();
             command = new SqlCommand(commands, conn);
-            try
-            {
-                command.ExecuteNonQuery();
-            }
-            catch (SQLiteException ex)
-            {
-                 ProntError(ex.Message);
-            }
+            command.ExecuteNonQuery();
             conn.Close();
         }
         private bool IsNull()
@@ -993,20 +955,5 @@ namespace TextGUIModule
             }
             
         }
-        private bool ExistDataBase()
-        {
-            return (File.Exists(pathSQL));
-        }
-
-        private void ProntInfo(string mess)
-        {
-            //MessageBox.Show(mess, "EvolPras", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void ProntError(string mess)
-        {
-            //MessageBox.Show(mess, "Exeptions", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-
     }
 }

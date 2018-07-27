@@ -96,5 +96,10 @@ namespace COURCEClientServer2.Controllers
             return JsonConvert.SerializeObject(true);
         }
 
+        [HttpPost]
+        public string Autification(string login, string password)
+        {
+            return JsonConvert.SerializeObject(_db.Autification(login, password));
+        }
     }
 }
