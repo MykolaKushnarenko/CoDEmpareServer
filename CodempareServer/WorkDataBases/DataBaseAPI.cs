@@ -955,5 +955,25 @@ namespace TextGUIModule
             }
             
         }
+
+        public string GetNameFromLogin(string login)
+        {
+            string name = "";
+            conn.Open();
+            using (command = new SqlCommand("select name from [user] join [account] on [user].id_account = [account].id where [account].email = @email", conn))
+            {
+                command.Parameters.Add(new SqlParameter("@email", login));
+                using (IDataReader r = command.ExecuteReader())
+                {
+                    if (r.Read())
+                    {
+                        name = r.GetString(0);
+                    }
+
+                }
+            }
+            conn.Close();
+            return name;
+        }
     }
 }

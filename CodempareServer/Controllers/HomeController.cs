@@ -99,7 +99,12 @@ namespace COURCEClientServer2.Controllers
         [HttpPost]
         public string Autification(string login, string password)
         {
-            return JsonConvert.SerializeObject(_db.Autification(login, password));
+            List<object> resultAfterAutif = new List<object>()
+            {
+                _db.Autification(login, password),
+                _db.GetNameFromLogin(login)
+        };
+            return JsonConvert.SerializeObject(resultAfterAutif);
         }
     }
 }
