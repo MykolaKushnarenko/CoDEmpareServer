@@ -102,9 +102,19 @@ namespace COURCEClientServer2.Controllers
             List<object> resultAfterAutif = new List<object>()
             {
                 _db.Autification(login, password),
-                _db.GetNameFromLogin(login)
-        };
+                _db.GetNameFromLogin(login),
+                JsonConvert.SerializeObject(_db.GetImageUser(login))
+            };
+            byte[] data = _db.GetImageUser(login);
             return JsonConvert.SerializeObject(resultAfterAutif);
+        }
+
+        [HttpPost]
+        public string ChangeUserImage(string sendImage, string name)
+        {
+            byte[] data = JsonConvert.DeserializeObject<byte[]>(sendImage);
+            _db.UpdateImage(name, data);
+            return JsonConvert.SerializeObject(true);
         }
     }
 }

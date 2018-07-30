@@ -975,5 +975,38 @@ namespace TextGUIModule
             conn.Close();
             return name;
         }
+
+        public void UpdateImage(string nameUser, byte[] image)
+        {
+            conn.Open();
+            using (command = new SqlCommand("UPDATE [account] SET [account].image = @image FROM [account] join [user] on [user].id_account = [account].id where [user].name = @name", conn))
+            {
+                command.Parameters.Add(new SqlParameter("@image", image));
+                command.Parameters.Add(new SqlParameter("@name", nameUser));
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+
+        public byte[] GetImageUser(string email)
+        {
+            conn.Open();
+            byte[] getingImage = new byte[] { };
+            using (command = new SqlCommand("select [account].image from [account] where [account].email = @email", conn))
+            {
+                command.Parameters.Add(new SqlParameter("@email", email));
+                SqlDataReader myDataReader;
+                myDataReader = command.ExecuteReader();
+
+                while (myDataReader.Read())
+                {
+                    getingImage = new byte[((byte[])myDataReader["image"]).Length];
+                    getingImage = (byte[])myDataReader["image"];
+                    break;
+                }
+            }
+            conn.Close();
+            return getingImage;
+        }
     }
 }
