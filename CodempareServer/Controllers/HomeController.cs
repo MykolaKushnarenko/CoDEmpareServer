@@ -105,7 +105,6 @@ namespace COURCEClientServer2.Controllers
                 _db.GetNameFromLogin(login),
                 JsonConvert.SerializeObject(_db.GetImageUser(login))
             };
-            byte[] data = _db.GetImageUser(login);
             return JsonConvert.SerializeObject(resultAfterAutif);
         }
 

@@ -1000,9 +1000,14 @@ namespace TextGUIModule
 
                 while (myDataReader.Read())
                 {
-                    getingImage = new byte[((byte[])myDataReader["image"]).Length];
-                    getingImage = (byte[])myDataReader["image"];
-                    break;
+                    
+                    if (!DBNull.Value.Equals(myDataReader["image"]))
+                    {
+                        getingImage = new byte[((byte[])myDataReader["image"]).Length];
+                        getingImage = (byte[])myDataReader["image"];
+                        break;
+                    }
+                    
                 }
             }
             conn.Close();
