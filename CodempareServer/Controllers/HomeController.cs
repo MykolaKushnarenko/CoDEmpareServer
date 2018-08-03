@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SQLite;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using COURCEClientServer2.ObjectDataSender;
 using Newtonsoft.Json;
@@ -59,6 +56,12 @@ namespace COURCEClientServer2.Controllers
             if (param.IsSearch)
             {
                 GetResultList();
+            }
+
+            if (param.CompareLocal)
+            {
+                _result.Add(JsonConvert.SerializeObject(_db.GetMainCodeList()));
+                _result.Add(JsonConvert.SerializeObject(_db.GetChildCodeList()));
             }
             return JsonConvert.SerializeObject(_result);
         }

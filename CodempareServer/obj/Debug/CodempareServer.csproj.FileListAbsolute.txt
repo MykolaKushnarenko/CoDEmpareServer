@@ -303,9 +303,6 @@ C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\EntityFramework.
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\Newtonsoft.Json.dll
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Data.SQLite.dll
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Data.SQLite.EF6.dll
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Data.SQLite.Linq.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Helpers.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Mvc.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Razor.dll
@@ -315,8 +312,6 @@ C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Webpa
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\EntityFramework.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\EntityFramework.SqlServer.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\Newtonsoft.Json.xml
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Data.SQLite.xml
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Data.SQLite.dll.config
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Razor.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Webpages.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Webpages.Deployment.xml
@@ -324,9 +319,11 @@ C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Webpa
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Helpers.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\System.Web.Mvc.xml
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\CodempareServer.csprojAssemblyReference.cache
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\COURCEClientServer2.g.resources
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\CodempareServer.csproj.CoreCompileInputs.cache
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\CodempareServer.csproj.CopyComplete
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\COURCEClientServer2.dll
 C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\COURCEClientServer2.pdb
+C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\TempleteAlgorithm.dll
+C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\bin\TempleteAlgorithm.pdb
+C:\Users\nikok\Desktop\Code\CodempareServer\CodempareServer\obj\Debug\CodempareServer.csprojAssemblyReference.cache

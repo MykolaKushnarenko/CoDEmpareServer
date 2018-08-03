@@ -13,8 +13,8 @@ namespace TextGUIModule
     public class Analysis
     {
         private Normalization _normalize;
-        private List<string> _compliteCodeMain = new List<string>();
-        private List<string> _compliteCodeChild = new List<string>();
+        public List<string> CompliteCodeMain { get; private set; } = new List<string>();
+        public List<string> CompliteCodeChild { get; } = new List<string>();
         private TokkinFactory _factory = null;
         private ATokkining _aTokkining = null;
 
@@ -22,34 +22,34 @@ namespace TextGUIModule
         public void RunAnalysis(string language, byte[] code)
         {
             _normalize = new Normalization(code);
-            _compliteCodeMain = _normalize.Normal();
+            CompliteCodeMain = _normalize.Normal();
             _factory = new TokkinFactory(language);
             _aTokkining = _factory.Create();
-            _aTokkining?.Tokening(_compliteCodeMain);
+            _aTokkining?.Tokening(CompliteCodeMain);
         }
 
         public void SetCodeMainFromDB(string code)
         {
-            _compliteCodeMain.Clear();
+            CompliteCodeMain.Clear();
             for (int i = 0; i < code.Length; i++)
             {
-                _compliteCodeMain.Add(code[i].ToString());
+                CompliteCodeMain.Add(code[i].ToString());
             }
         }
         public void SetCodeChildFromDB(string code)
         {
-            _compliteCodeChild.Clear();
+            CompliteCodeChild.Clear();
             for (int i = 0; i < code.Length; i++)
             {
-                _compliteCodeChild.Add(code[i].ToString());
+                CompliteCodeChild.Add(code[i].ToString());
             }
         }
         public List<string> InserToDB()
         {
             List<string> grams = new List<string>();
-            for (int i = 0; i < _compliteCodeMain.Count - 2; i++)
+            for (int i = 0; i < CompliteCodeMain.Count - 2; i++)
             {
-                string threeGram = _compliteCodeMain[i] + _compliteCodeMain[i + 1] + _compliteCodeMain[i + 2];
+                string threeGram = CompliteCodeMain[i] + CompliteCodeMain[i + 1] + CompliteCodeMain[i + 2];
                 grams.Add(threeGram);
                 
             }
@@ -79,13 +79,13 @@ namespace TextGUIModule
         }
         public string GetNormalizeCode()
         {
-            string normalJoin = string.Join("", _compliteCodeMain.ToArray());
+            string normalJoin = string.Join("", CompliteCodeMain.ToArray());
             return normalJoin;
         }
 
         public double ResultAlgorithm(int numberOfAlg)
         {
-            AlgorithmFactory fuctory = new AlgorithmFactory(numberOfAlg, _compliteCodeMain, _compliteCodeChild);
+            AlgorithmFactory fuctory = new AlgorithmFactory(numberOfAlg, CompliteCodeMain, CompliteCodeChild);
             IAlgorithm algorithm = fuctory.Create();
             algorithm?.CompareRes();
             return algorithm.Result;

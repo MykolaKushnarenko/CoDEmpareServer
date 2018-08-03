@@ -13,5 +13,6 @@ namespace COURCEClientServer2
         public bool IsSearch { get; set; }
         public string FileMane { get; set; }
         public byte[] Code { get; set; }
+        public bool CompareLocal { get; set; }
     }
 }

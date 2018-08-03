@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -1013,5 +1012,8 @@ namespace TextGUIModule
             conn.Close();
             return getingImage;
         }
+
+        public List<string> GetMainCodeList() => Code.CompliteCodeMain;
+        public List<string> GetChildCodeList() => Code.CompliteCodeChild;
     }
 }
