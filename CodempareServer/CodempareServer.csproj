@@ -134,6 +134,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Normalization.cs" />
     <Compile Include="ObjectDataSender\RegistrationObject.cs" />
+    <Compile Include="ObjectDataSender\ResultCompareObject.cs" />
     <Compile Include="Tokking\ATokkining.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Algorithm\Heskel.cs" />

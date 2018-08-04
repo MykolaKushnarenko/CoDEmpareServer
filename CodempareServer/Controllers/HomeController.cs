@@ -13,7 +13,8 @@ namespace COURCEClientServer2.Controllers
     public class HomeController : Controller
     {
         // GET: Home
-        private List<string> _result = new List<string>();
+        private List<string> _allCompileType = new List<string>();
+        private ResultCompareObject _resultCompare = new ResultCompareObject();
         private DataBaseAPI _db = new DataBaseAPI();
         public ActionResult Index()
         {
@@ -23,16 +24,16 @@ namespace COURCEClientServer2.Controllers
 
         private void GetResultList()
         {
-            _result.Add(_db.GetOrignCodeFromId(_db.IdMainFileForHist));
-            _result.Add(_db.GetOrignCodeFromId(_db.IdiDenticalFie));
+            _resultCompare.MainCodeText = _db.GetOrignCodeFromId(_db.IdMainFileForHist);
+            _resultCompare.ChildCodeText = _db.GetOrignCodeFromId(_db.IdiDenticalFie);
             _db.SetCodeMain(_db.IdMainFileForHist);
             _db.SetCodeChild(_db.IdiDenticalFie);
             double resVarnFish = _db.Code.ResultAlgorithm(1);
             double resVShiling = _db.Code.ResultAlgorithm(2);
             double resHeskel = _db.Code.ResultAlgorithm(0);
-            _result.Add(String.Format("Levenshtein Distance : {0:0.##}", resVarnFish));
-            _result.Add(String.Format("WShiling : {0:0.##}", resVShiling));
-            _result.Add(String.Format("Haskel : {0:0.##}", resHeskel));
+            _resultCompare.ResultCompare.Add(String.Format("Levenshtein Distance : {0:0.##}", resVarnFish));
+            _resultCompare.ResultCompare.Add(String.Format("WShiling : {0:0.##}", resVShiling));
+            _resultCompare.ResultCompare.Add(String.Format("Haskel : {0:0.##}", resHeskel));
             _db.AddingHistiry(resVarnFish, resVShiling, resHeskel);
         }
         [HttpPost]
@@ -40,8 +41,8 @@ namespace COURCEClientServer2.Controllers
         {
             string result = await Task.Run(() =>
             {
-                _result = _db.GetCompile(lang);
-                string s = JsonConvert.SerializeObject(_result);
+                _allCompileType = _db.GetCompile(lang);
+                string s = JsonConvert.SerializeObject(_allCompileType);
                 return s;
             });
             return result;
@@ -51,8 +52,6 @@ namespace COURCEClientServer2.Controllers
         public async Task<string> AddCode(AddingCodeObject param)
         {
             bool isOver = await _db.AddingSubmit(param.Name, param.Description, param.CompileType, param.Code, param.IsSearch, param.FileMane);
-            _result.Clear();
-            _result.Add(JsonConvert.SerializeObject(isOver));
             if (param.IsSearch)
             {
                 GetResultList();
@@ -60,10 +59,10 @@ namespace COURCEClientServer2.Controllers
 
             if (param.CompareLocal)
             {
-                _result.Add(JsonConvert.SerializeObject(_db.GetMainCodeList()));
-                _result.Add(JsonConvert.SerializeObject(_db.GetChildCodeList()));
+                _resultCompare.TokkingMainCode = _db.GetMainCodeList();
+                _resultCompare.TokkingChildCode =_db.GetChildCodeList();
             }
-            return JsonConvert.SerializeObject(_result);
+            return JsonConvert.SerializeObject(_resultCompare);
         }
 
         [HttpGet]
@@ -78,10 +77,8 @@ namespace COURCEClientServer2.Controllers
         public string SearchFromListSubmit(string tagForSearch)
         {
             _db.SearchIn(tagForSearch);
-            _result.Clear();
-            _result.Add(JsonConvert.SerializeObject(false));
             GetResultList();
-            return JsonConvert.SerializeObject(_result);
+            return JsonConvert.SerializeObject(_resultCompare);
         }
 
         [HttpGet]
