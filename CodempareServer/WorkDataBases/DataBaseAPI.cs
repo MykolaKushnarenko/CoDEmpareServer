@@ -21,6 +21,8 @@ namespace TextGUIModule
         private int idMainFileForHist = -1;
         private int idiDenticalFie = -1;
         public Analysis Code { get; private set; }
+        public List<string> GetMainCodeList() => Code.CompliteCodeMain;
+        public List<string> GetChildCodeList() => Code.CompliteCodeChild;
         public int IdMainFileForHist
         {
             get
@@ -1013,7 +1015,31 @@ namespace TextGUIModule
             return getingImage;
         }
 
-        public List<string> GetMainCodeList() => Code.CompliteCodeMain;
-        public List<string> GetChildCodeList() => Code.CompliteCodeChild;
+        public void ChangeName(string name, string mail)
+        {
+            conn.Open();
+            using (command = new SqlCommand("Update [user] set [user].name = @name from [user] join [account] on [user].id_account = [account].id where [account].email = @mail", conn))
+            {
+                command.Parameters.Add(new SqlParameter("@email", mail));
+                command.Parameters.Add(new SqlParameter("@name", name));
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
+
+        public void ChangePassword(string password, string mail)
+        {
+            conn.Open();
+            using (command =
+                new SqlCommand(
+                    "Update [account] set [account].password = @password from [account] where [account].email = @email",
+                    conn))
+            {
+                command.Parameters.Add(new SqlParameter("@password", CryptographyPassword(password)));
+                command.Parameters.Add(new SqlParameter("@email", mail));
+                command.ExecuteNonQuery();
+            }
+            conn.Close();
+        }
     }
 }

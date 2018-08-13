@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
@@ -114,6 +115,19 @@ namespace COURCEClientServer2.Controllers
             byte[] data = JsonConvert.DeserializeObject<byte[]>(sendImage);
             _db.UpdateImage(name, data);
             return JsonConvert.SerializeObject(true);
+        }
+
+        [HttpPost]
+        public void UpdateUserInfo(string email, string name, string password)
+        {
+            if (name != null)
+            {
+                _db.ChangeName(name, email);
+            }
+            if (password != null)
+            {
+                _db.ChangePassword(password, email);
+            }
         }
     }
 }
